@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     color: '#ffffff',
-    padding: 10,
-    marginTop: 16,
-    marginLeft: 35,
-    marginRight: 35,
-    borderRadius: 5,
+    padding: 1,
+    marginTop: 10,
+    marginLeft: 250,
+    marginRight: 1,
+    borderRadius: 50,
   },
   text: {
     color: '#ffffff',
