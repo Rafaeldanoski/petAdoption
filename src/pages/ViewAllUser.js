@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, Text, View, SafeAreaView, StyleSheet, Button } from 'react-native';
+import { FlatList, Text, View, SafeAreaView, StyleSheet} from 'react-native';
 import { DatabaseConnection } from '../database/database-connection';
-import RegisterUser from './RegisterUser';
+import MyImageButton from './components/MyImageButton';
+
+
 
 const db = DatabaseConnection.getConnection();
 
-const ViewAllUser = (navigation) => {
+const ViewAllUser = ({ navigation }) => {
   let [flatListItems, setFlatListItems] = useState([]);
 
   useEffect(() => {
@@ -19,22 +21,24 @@ const ViewAllUser = (navigation) => {
             temp.push(results.rows.item(i));
           setFlatListItems(temp);
         }
+        
       );
     });
+    
   }, []);
 
   let listItemView = (item) => {
     return (
       
       <View
-        key={item.user_id}
+        key={item.user_name}
         style={{ backgroundColor: '#EEE', marginTop: 10, padding: 15, borderRadius: 40 }}>
-        <Button
-         title="Press me"
-         onPress={() => navigation.navigate(RegisterUser)}
-
-        ></Button>
-          
+        <MyImageButton
+        title="Editar"
+        btnColor='#A45BB9'
+        customClick={() => navigation.navigate('Update')}
+      ></MyImageButton>
+     
      
         <Text style={styles.textheader}>Nome</Text>
         <Text style={styles.textbottom}>{item.user_name}</Text>
@@ -53,6 +57,9 @@ const ViewAllUser = (navigation) => {
     <SafeAreaView style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: 'white' }}>
         <View style={{ flex: 1 }}>
+      
+      
+          
           <FlatList
             style={{ marginTop: 20 }}
             contentContainerStyle={{ paddingHorizontal: 20 }}

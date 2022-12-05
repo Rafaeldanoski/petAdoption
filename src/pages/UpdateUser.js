@@ -13,6 +13,7 @@ import Mytextinput from './components/Mytextinput';
 import Mybutton from './components/Mybutton';
 import { DatabaseConnection } from '../database/database-connection';
 
+
 const db = DatabaseConnection.getConnection();
 
 const UpdateUser = ({ navigation }) => {
@@ -31,7 +32,7 @@ const UpdateUser = ({ navigation }) => {
     console.log(inputUserId);
     db.transaction((tx) => {
       tx.executeSql(
-        'SELECT * FROM table_user where user_id = ?',
+        'SELECT * FROM table_user where user_name = ?',
         [inputUserId],
         (tx, results) => {
           var len = results.rows.length;
@@ -51,12 +52,7 @@ const UpdateUser = ({ navigation }) => {
     });
   };
   let updateUser = () => {
-    console.log(inputUserId, userName, userContact, userAddress);
-
-    if (!inputUserId) {
-      alert('Por Favor informe o Código!');
-      return;
-    }
+    console.log(userName, userContact, userAddress);
     if (!userName) {
       alert('Por favor informe o Nome !');
       return;
@@ -72,7 +68,8 @@ const UpdateUser = ({ navigation }) => {
 
     db.transaction((tx) => {
       tx.executeSql(
-        'UPDATE table_user set user_name=?, user_contact=? , user_address=? where user_id=?',
+        'UPDATE table_user set user_name=?, user_contact=? , user_address=? where user_name=?',
+
         [userName, userContact, userAddress, inputUserId],
         (tx, results) => {
           console.log('Results', results.rowsAffected);
@@ -83,7 +80,7 @@ const UpdateUser = ({ navigation }) => {
               [
                 {
                   text: 'Ok',
-                  onPress: () => navigation.navigate('HomeScreen'),
+                  onPress: () => navigation.navigate('ViewAllUser'),
                 },
               ],
               { cancelable: false }
@@ -104,7 +101,7 @@ const UpdateUser = ({ navigation }) => {
               style={{ flex: 1, justifyContent: 'space-between' }}>
               <Mytext text="Filtro de Pet" />
               <Mytextinput
-                placeholder="Entre com o Código do Pet"
+                placeholder="Nome do Pet"
                 style={{ padding: 10 }}
                 onChangeText={
                   (inputUserId) => setInputUserId(inputUserId)
