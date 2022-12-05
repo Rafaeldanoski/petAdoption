@@ -20,11 +20,11 @@ const App = () => {
       <Stack.Navigator initialRouteName="HomeScreen">
         <Stack.Screen
           name="HomeScreen"
-          component={HomeScreen}
+          component={ViewAllUser}
           options={{
-            title: 'Registro de Pets',
+            title: 'MOV | ADOÇÕES',
             headerStyle: {
-              backgroundColor: '#00AD98',
+              backgroundColor: '#FFD177',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {

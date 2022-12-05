@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, Text, View, SafeAreaView, StyleSheet } from 'react-native';
+import { FlatList, Text, View, SafeAreaView, StyleSheet, Button } from 'react-native';
 import { DatabaseConnection } from '../database/database-connection';
+import RegisterUser from './RegisterUser';
 
 const db = DatabaseConnection.getConnection();
 
-const ViewAllUser = () => {
+const ViewAllUser = (navigation) => {
   let [flatListItems, setFlatListItems] = useState([]);
 
   useEffect(() => {
@@ -24,12 +25,17 @@ const ViewAllUser = () => {
 
   let listItemView = (item) => {
     return (
+      
       <View
         key={item.user_id}
-        style={{ backgroundColor: '#EEE', marginTop: 20, padding: 30, borderRadius: 10 }}>
-        <Text style={styles.textheader}>Código</Text>
-        <Text style={styles.textbottom}>{item.user_id}</Text>
+        style={{ backgroundColor: '#EEE', marginTop: 10, padding: 15, borderRadius: 40 }}>
+        <Button
+         title="Press me"
+         onPress={() => navigation.navigate(RegisterUser)}
 
+        ></Button>
+          
+     
         <Text style={styles.textheader}>Nome</Text>
         <Text style={styles.textbottom}>{item.user_name}</Text>
 
@@ -38,9 +44,8 @@ const ViewAllUser = () => {
 
         <Text style={styles.textheader}>Observações</Text>
         <Text style={styles.textbottom}>{item.user_address}</Text>
-
-
       </View>
+      
     );
   };
 
@@ -49,10 +54,10 @@ const ViewAllUser = () => {
       <View style={{ flex: 1, backgroundColor: 'white' }}>
         <View style={{ flex: 1 }}>
           <FlatList
-            style={{ marginTop: 30 }}
+            style={{ marginTop: 20 }}
             contentContainerStyle={{ paddingHorizontal: 20 }}
             data={flatListItems}
-            keyExtractor={(item, index) => index.toString()}
+            keyExtractor={(_item, index) => index.toString()}
             renderItem={({ item }) => listItemView(item)}
           />
         </View>
