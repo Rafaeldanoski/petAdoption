@@ -7,12 +7,12 @@ import { DatabaseConnection } from '../database/database-connection';
 const db = DatabaseConnection.getConnection();
 
 const DeleteUser = ({ navigation }) => {
-  let [inputUserId, setInputUserId] = useState('');
+  let [inputUserId, setInputUserId] = useState();
 
   let deleteUser = () => {
     db.transaction((tx) => {
       tx.executeSql(
-        'DELETE FROM  table_user where user_id=?',
+        'DELETE FROM  table_user where user_name=?',
         [inputUserId],
         (tx, results) => {
           console.log('Results', results.rowsAffected);
@@ -29,7 +29,7 @@ const DeleteUser = ({ navigation }) => {
               { cancelable: false }
             );
           } else {
-            alert('Por favor entre com um código de pet válido !');
+            alert('Por favor entre com o nome de Pet válido !');
           }
         }
       );
@@ -41,7 +41,7 @@ const DeleteUser = ({ navigation }) => {
       <View style={{ flex: 1, backgroundColor: 'white' }}>
         <View style={{ flex: 1 }}>
           <Mytextinput
-            placeholder="Entre com o Código do Pet"
+            placeholder="Entre com o nome do Pet"
             onChangeText={
               (inputUserId) => setInputUserId(inputUserId)
             }

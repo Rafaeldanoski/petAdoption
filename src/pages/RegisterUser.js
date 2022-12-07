@@ -21,11 +21,11 @@ const RegisterUser = ({ navigation }) => {
     console.log(userName, userContact, userAddress);
 
     if (!userName) {
-      alert('Por favor preencha o nome !');
+      alert('Por favor preencha o nome do Pet!');
       return;
     }
     if (!userContact) {
-      alert('Por favor preencha o contato');
+      alert('Por favor preencha o contato do responsável');
       return;
     }
     if (!userAddress) {
@@ -42,7 +42,7 @@ const RegisterUser = ({ navigation }) => {
           if (results.rowsAffected > 0) {
             Alert.alert(
               'Sucesso',
-              'Pet Registrado com Sucesso !!!',
+              'Pet Cadastrado com Sucesso !!!',
               [
                 {
                   text: 'Ok',
@@ -51,7 +51,7 @@ const RegisterUser = ({ navigation }) => {
               ],
               { cancelable: false }
             );
-          } else alert('Erro ao tentar Registrar o Pet !!!');
+          } else alert('Erro ao tentar Cadastrar o Pet !!!');
         }
       );
     });
@@ -66,14 +66,14 @@ const RegisterUser = ({ navigation }) => {
               behavior="padding"
               style={{ flex: 1, justifyContent: 'space-between' }}>
               <Mytextinput
-                placeholder="Entre com o Nome"
+                placeholder="Digite o  nome do Pet:"
                 onChangeText={
                   (userName) => setUserName(userName)
                 }
                 style={{ padding: 10 }}
               />
               <Mytextinput
-                placeholder="Entre com o Telefone do responsável"
+                placeholder="Digite o contato do responsável:"
                 onChangeText={
                   (userContact) => setUserContact(userContact)
                 }
@@ -82,7 +82,7 @@ const RegisterUser = ({ navigation }) => {
                 style={{ padding: 10 }}
               />
               <Mytextinput
-                placeholder="Entre com as observações sobre o pet (condições de saúde, cuidados especiais, etc...)"
+                placeholder="Digite as observações sobre o pet (condições de saúde, cuidados especiais, etc...)"
                 onChangeText={
                   (userAddress) => setUserAddress(userAddress)
                 }

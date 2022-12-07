@@ -32,7 +32,7 @@ const HomeScreen = ({ navigation }) => {
           <View style={{ flex: 1 }}>
 
             <MyImageButton
-              title="Registrar Pet"
+              title="Cadastrar Pet"
               btnColor='#2992C4'
               btnIcon="user-plus"
               customClick={() => navigation.navigate('Register')}

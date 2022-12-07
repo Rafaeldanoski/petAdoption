@@ -54,15 +54,15 @@ const UpdateUser = ({ navigation }) => {
   let updateUser = () => {
     console.log(userName, userContact, userAddress);
     if (!userName) {
-      alert('Por favor informe o Nome !');
+      alert('Por favor, informe o nome do Pet!');
       return;
     }
     if (!userContact) {
-      alert('Por Favor informe o Telefone !');
+      alert('Por Favor, informe o Telefone do responsável!');
       return;
     }
     if (!userAddress) {
-      alert('Por Favor informe a observação !');
+      alert('Por Favor, informe observações sobre o Pet!');
       return;
     }
 
@@ -80,7 +80,7 @@ const UpdateUser = ({ navigation }) => {
               [
                 {
                   text: 'Ok',
-                  onPress: () => navigation.navigate('ViewAllUser'),
+                  onPress: () => navigation.navigate('ViewAll'),
                 },
               ],
               { cancelable: false }
@@ -112,7 +112,7 @@ const UpdateUser = ({ navigation }) => {
                 customClick={searchUser}
               />
               <Mytextinput
-                placeholder="Entre com o Nome"
+                placeholder="Digite o nome do Pet:"
                 value={userName}
                 style={{ padding: 10 }}
                 onChangeText={
@@ -120,7 +120,7 @@ const UpdateUser = ({ navigation }) => {
                 }
               />
               <Mytextinput
-                placeholder="Entre com o Telefone"
+                placeholder="Digite o telefone do responsável:"
                 value={'' + userContact}
                 onChangeText={
                   (userContact) => setUserContact(userContact)
@@ -131,7 +131,7 @@ const UpdateUser = ({ navigation }) => {
               />
               <Mytextinput
                 value={userAddress}
-                placeholder="Entre com a observação"
+                placeholder="Digite as observações do Pet:"
                 onChangeText={
                   (userAddress) => setUserAddress(userAddress)
                 }

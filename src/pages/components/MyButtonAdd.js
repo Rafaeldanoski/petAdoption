@@ -1,9 +1,10 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
-const MyImageButton = (props) => {
+const MyButtonAdd = (props) => {
+  
 
   return (
     <TouchableOpacity
@@ -11,7 +12,7 @@ const MyImageButton = (props) => {
       onPress={props.customClick}>
 
       <Icon style={styles.icon}
-        name={props.btnIcon} size={20} color='black' />
+        name={props.btnIcon} size={30} color='black' />
 
       <Text style={styles.text}>
         {props.title}
@@ -22,20 +23,21 @@ const MyImageButton = (props) => {
 
 const styles = StyleSheet.create({
   button: {
+    resizeMode:'contain',
     alignItems: 'center',
     color: '#000000',
     padding: 1,
-    marginTop: 10,
-    marginLeft: 200,
-    marginRight: 1,
-    borderRadius: 40,
+    marginTop: 5,
+    marginLeft: 35,
+    marginRight: 35,
+    borderRadius: 50,
   },
   text: {
     color: '#000000',
   },
   icon: {
-    paddingBottom: 5,
+    paddingBottom: 2,
   }
 });
 
-export default MyImageButton;
+export default MyButtonAdd;

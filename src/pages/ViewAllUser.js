@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, Text, View, SafeAreaView, StyleSheet} from 'react-native';
+import { FlatList, Text, View, SafeAreaView, StyleSheet, Image} from 'react-native';
 import { DatabaseConnection } from '../database/database-connection';
+import MyButtonAdd from './components/MyButtonAdd';
 import MyImageButton from './components/MyImageButton';
-
-
 
 const db = DatabaseConnection.getConnection();
 
@@ -32,18 +31,24 @@ const ViewAllUser = ({ navigation }) => {
       
       <View
         key={item.user_name}
-        style={{ backgroundColor: '#EEE', marginTop: 10, padding: 15, borderRadius: 40 }}>
-        <MyImageButton
-        title="Editar"
-        btnColor='#A45BB9'
+        style={{ backgroundColor: '#FFD177', marginTop: 10, padding: 40, borderRadius: 80 }}>
+          
+
+      <MyImageButton
+        btnIcon="pencil"
+        btnColor='#DCDCDC'
         customClick={() => navigation.navigate('Update')}
       ></MyImageButton>
-     
-     
-        <Text style={styles.textheader}>Nome</Text>
+      
+     <MyImageButton
+        btnIcon="trash"
+        btnColor='#F08080'
+        customClick={() => navigation.navigate('Delete')}
+      ></MyImageButton>  
+      
+      
         <Text style={styles.textbottom}>{item.user_name}</Text>
 
-        <Text style={styles.textheader}>Contato</Text>
         <Text style={styles.textbottom}>{item.user_contact}</Text>
 
         <Text style={styles.textheader}>Observações</Text>
@@ -57,7 +62,12 @@ const ViewAllUser = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: 'white' }}>
         <View style={{ flex: 1 }}>
-      
+        <MyButtonAdd
+              title="Cadastrar Pet"
+              btnIcon="dog"
+              btnColor='#9ACD32'
+              customClick={() => navigation.navigate('Register')} 
+            />
       
           
           <FlatList
@@ -82,7 +92,10 @@ const styles = StyleSheet.create({
   },
   textbottom: {
     color: '#111',
-    fontSize: 18,
+    marginTop: 2,
+    marginLeft: 0,
+    marginRight: 1,
+    borderRadius: 10,
   },
 });
 

@@ -11,6 +11,7 @@ import UpdateUser from './src/pages/UpdateUser';
 import ViewUser from './src/pages/ViewUser';
 import ViewAllUser from './src/pages/ViewAllUser';
 import DeleteUser from './src/pages/DeleteUser';
+import { Button } from 'react-native-web';
 
 const Stack = createStackNavigator();
 
@@ -24,7 +25,7 @@ const App = () => {
           options={{
             title: 'MOV | ADOÇÕES',
             headerStyle: {
-              backgroundColor: '#FFD177',
+              backgroundColor: '#FABC43',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -32,13 +33,14 @@ const App = () => {
             },
           }}
         />
+
         <Stack.Screen
           name="Register"
           component={RegisterUser}
           options={{
             title: 'Cadastrar Pet',
             headerStyle: {
-              backgroundColor: '#2992C4',
+              backgroundColor: '#9ACD32',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -52,7 +54,7 @@ const App = () => {
           options={{
             title: 'Atualizar Pet',
             headerStyle: {
-              backgroundColor: '#A45BB9',
+              backgroundColor: '#FABC43',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {

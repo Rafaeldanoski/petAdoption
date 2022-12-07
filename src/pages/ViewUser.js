@@ -37,7 +37,7 @@ const ViewUser = () => {
         <View style={{ flex: 1 }}>
           <Mytext text="Filtro de Usuário" />
           <Mytextinput
-            placeholder="Entre com o Código do Pet"
+            placeholder="Entre com o Nome do Pet"
             onChangeText={
               (inputUserId) => setInputUserId(inputUserId)
             }

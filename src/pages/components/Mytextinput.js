@@ -14,7 +14,7 @@ const Mytextinput = (props) => {
       <TextInput
         underlineColorAndroid="transparent"
         placeholder={props.placeholder}
-        placeholderTextColor="#00AD98"
+        placeholderTextColor="#95bfba"
         keyboardType={props.keyboardType}
         onChangeText={props.onChangeText}
         returnKeyType={props.returnKeyType}
