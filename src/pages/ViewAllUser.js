@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, Text, View, SafeAreaView, StyleSheet, Image} from 'react-native';
+import { FlatList, Text, View, SafeAreaView, StyleSheet, Image, btnIcon} from 'react-native';
 import { DatabaseConnection } from '../database/database-connection';
 import MyButtonAdd from './components/MyButtonAdd';
+import MyImage from './components/MyImage';
 import MyImageButton from './components/MyImageButton';
 
 const db = DatabaseConnection.getConnection();
@@ -26,21 +27,21 @@ const ViewAllUser = ({ navigation }) => {
     
   }, []);
 
-  let listItemView = (item) => {
+let listItemView = (item) => {
     return (
       
       <View
         key={item.user_name}
         style={{ backgroundColor: '#FFD177', marginTop: 10, padding: 40, borderRadius: 80 }}>
-          
-
+      
+     
+      
       <MyImageButton
         btnIcon="pencil"
         btnColor='#DCDCDC'
         customClick={() => navigation.navigate('Update')}
       ></MyImageButton>
-      
-     <MyImageButton
+      <MyImageButton
         btnIcon="trash"
         btnColor='#F08080'
         customClick={() => navigation.navigate('Delete')}
@@ -48,11 +49,15 @@ const ViewAllUser = ({ navigation }) => {
       
       
         <Text style={styles.textbottom}>{item.user_name}</Text>
-
+      
         <Text style={styles.textbottom}>{item.user_contact}</Text>
 
         <Text style={styles.textheader}>Observações</Text>
         <Text style={styles.textbottom}>{item.user_address}</Text>
+        <MyImageButton
+        btnIcon="whatsapp"
+        btnColor='#34af23'
+      ></MyImageButton>   
       </View>
       
     );
@@ -62,14 +67,13 @@ const ViewAllUser = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: 'white' }}>
         <View style={{ flex: 1 }}>
+  
         <MyButtonAdd
               title="Cadastrar Pet"
               btnIcon="dog"
               btnColor='#9ACD32'
               customClick={() => navigation.navigate('Register')} 
             />
-      
-          
           <FlatList
             style={{ marginTop: 20 }}
             contentContainerStyle={{ paddingHorizontal: 20 }}
